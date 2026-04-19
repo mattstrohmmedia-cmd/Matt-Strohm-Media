@@ -1,0 +1,38 @@
+{
+  "name": "matt-strohm-media",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "showreel:studio": "cd remotion && npx remotion studio src/index.ts",
+    "showreel:render": "cd remotion && npx remotion render src/index.ts Showreel ../public/hero-showreel.mp4 --codec=h264 --crf=22"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "@next/third-parties": "^14.2.15",
+    "@react-email/components": "^0.0.28",
+    "framer-motion": "^11.11.17",
+    "next": "14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.2",
+    "resend": "^4.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.15.9",
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.6.3"
+  }
+}

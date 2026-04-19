@@ -1,0 +1,19 @@
+node_modules
+.next
+out
+.env
+.env.local
+.env*.local
+.vercel
+.DS_Store
+*.log
+.turbo
+next-env.d.ts
+
+# Large original video files — only keep compressed web versions
+public/videos/hero.mp4
+public/videos/hero test.mp4
+public/videos/Event 1.mp4
+public/videos/Event 2.mp4
+public/videos/Event 3.mp4
+public/videos/extra.mp4

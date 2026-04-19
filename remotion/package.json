@@ -1,0 +1,22 @@
+{
+  "name": "matt-strohm-media-showreel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "npx remotion studio src/index.ts",
+    "render": "npx remotion render src/index.ts Showreel ../public/hero-showreel.mp4 --codec=h264 --crf=22 --output-location=../public/hero-showreel.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.285",
+    "@remotion/player": "4.0.285",
+    "remotion": "4.0.285"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.6.3"
+  },
+  "remotion": {
+    "entryPoint": "src/index.ts"
+  }
+}
