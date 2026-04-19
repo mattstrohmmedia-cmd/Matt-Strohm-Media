@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { Hero } from '@/components/sections/Hero';
 import { Marquee } from '@/components/sections/Marquee';
-import { Services } from '@/components/sections/Services';
 import { Stats } from '@/components/sections/Stats';
 import { Split } from '@/components/sections/Split';
 import { Cta } from '@/components/sections/Cta';
@@ -8,6 +8,14 @@ import { Instagram } from '@/components/sections/Instagram';
 import { Reveal } from '@/components/primitives/Reveal';
 import { ButtonLink, Arrow } from '@/components/primitives/Button';
 import { testimonials } from '@/content/testimonials';
+
+const homeServices = [
+  { num: '01', title: 'Photography',            href: '/services/photography' },
+  { num: '02', title: 'Videography',            href: '/services/videography' },
+  { num: '03', title: 'Web Design',             href: '/services/web-design' },
+  { num: '04', title: 'Social Media',           href: '/services/social-media' },
+  { num: '05', title: 'AI Business Assistance', href: '/services/ai-business' },
+];
 
 function TestimonialCard({ quote, author, role }: { quote: string; author: string; role?: string }) {
   return (
@@ -46,30 +54,66 @@ export default function HomePage() {
       {/* ── 2. Marquee ── */}
       <Marquee />
 
-      {/* ── 3. Services — white bg (#0a0a0a), centered header ── */}
-      <Services
-        label="What I Do"
-        title="Services"
-        text="From capturing your story to building your online presence — everything you need to stand out."
-        centered
-        services={[
-          { num: '01', icon: '📷', title: 'Photography',            text: 'Weddings, events, commercial shoots, portraits — professional imagery that tells your story.',                                         href: '/services/photography' },
-          { num: '02', icon: '🎬', title: 'Videography',            text: 'Cinematic wedding films, promotional content, event coverage — motion that moves people.',                                            href: '/services/videography' },
-          { num: '03', icon: '💻', title: 'Web Design',             text: 'Fast, modern, mobile-first websites built to convert. From tradespeople to hospitality — sites that work hard.',                     href: '/services/web-design' },
-          { num: '04', icon: '📱', title: 'Social Media Management',text: 'Content strategy, creation, scheduling, and Meta ad management — grow your brand and reach the right audience.',                    href: '/services/social-media' },
-          { num: '05', icon: '🤖', title: 'AI Business Assistance', text: 'Leverage AI tools to streamline your operations and automate content — without the tech headache.',                                  href: '/services/ai-business' },
-        ]}
-      />
+      {/* ── 3. Services — editorial list ── */}
+      <section id="services" className="py-28">
+        <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-12">
+          <div className="text-center mb-16">
+            <Reveal>
+              <div className="section-label justify-center mb-4" style={{ display: 'inline-flex' }}>What I Do</div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="section-title">Services</h2>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="section-text mx-auto">From capturing your story to building your online presence — everything you need to stand out.</p>
+            </Reveal>
+          </div>
 
-      {/* ── 5. Stats ── */}
+          <div className="border-t border-white/[0.08]">
+            {homeServices.map((s, i) => (
+              <Reveal key={s.num} delay={i * 0.06}>
+                <Link
+                  href={s.href}
+                  className="group flex items-center gap-6 py-6 border-b border-white/[0.08] hover:border-accent/20 transition-colors duration-300"
+                >
+                  <span className="font-body text-[0.6rem] tracking-[0.2em] text-text-muted/50 w-6 flex-shrink-0 select-none">
+                    {s.num}
+                  </span>
+                  <span
+                    className="font-display flex-1 leading-none text-text-dim group-hover:text-text"
+                    style={{
+                      fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+                      transition: 'color 280ms cubic-bezier(0.23,1,0.32,1)',
+                    }}
+                  >
+                    {s.title}
+                  </span>
+                  <span className="text-accent opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0">
+                    <Arrow />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.4}>
+            <div className="mt-10 flex justify-center">
+              <ButtonLink href="/contact" variant="ghost">
+                Book a free consultation <Arrow />
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── 4. Stats ── */}
       <Stats items={[
-        { num: '100+', label: 'Projects Completed' },
+        { num: '100+', label: 'Projects Delivered' },
         { num: '50+',  label: 'Happy Clients' },
-        { num: '5',    label: 'Services Offered' },
-        { num: '5★',   label: 'Google Reviews' },
+        { num: '5.0★', label: 'Google Rating' },
       ]} />
 
-      {/* ── 6. About — bg-primary ── */}
+      {/* ── 5. About ── */}
       <Split
         label="About Me"
         title={<>Matthew Strohm</>}
@@ -84,7 +128,7 @@ export default function HomePage() {
         cta={<ButtonLink href="/about" variant="ghost">Read My Story <Arrow /></ButtonLink>}
       />
 
-      {/* ── 7. Testimonials — bg-secondary (#111) ── */}
+      {/* ── 6. Testimonials ── */}
       <section style={{ background: '#111111' }} className="py-28">
         <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-12">
           <div className="text-center mb-16">
@@ -95,23 +139,49 @@ export default function HomePage() {
               <h2 className="section-title">What People Say</h2>
             </Reveal>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {(Object.values(testimonials) as { quote: string; author: string; role?: string }[]).map((t, i) => (
-              <Reveal key={i} delay={i * 0.08} variant={i % 2 === 0 ? 'slide-left' : 'slide-right'}>
-                <TestimonialCard {...t} />
-              </Reveal>
-            ))}
+
+          {/* Featured pull-quote */}
+          <Reveal delay={0.15}>
+            <blockquote className="mb-12 lg:mb-16">
+              <span
+                className="font-display leading-none text-accent/10 select-none pointer-events-none block -mb-6"
+                style={{ fontSize: 'clamp(5rem,10vw,8rem)' }}
+                aria-hidden
+              >
+                &ldquo;
+              </span>
+              <p className="font-display italic leading-[1.6] text-text max-w-[72ch]" style={{ fontSize: 'clamp(1.2rem,2.5vw,1.85rem)' }}>
+                &ldquo;{testimonials.wedding.quote}&rdquo;
+              </p>
+              <footer className="mt-8 flex items-center gap-4">
+                <div className="w-8 h-px bg-accent flex-shrink-0" />
+                <cite className="not-italic text-sm font-semibold text-text">{testimonials.wedding.author}</cite>
+                {testimonials.wedding.role && (
+                  <span className="text-xs text-text-muted tracking-[0.1em] uppercase">{testimonials.wedding.role}</span>
+                )}
+              </footer>
+            </blockquote>
+          </Reveal>
+
+          {/* Supporting — 2 col */}
+          <div className="grid sm:grid-cols-2 gap-5 border-t border-white/[0.06] pt-10">
+            <Reveal delay={0.2} variant="slide-left">
+              <TestimonialCard {...testimonials.business} />
+            </Reveal>
+            <Reveal delay={0.3} variant="slide-right">
+              <TestimonialCard {...testimonials.automotive} />
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ── 8. Instagram feed ── */}
+      {/* ── 7. Instagram feed ── */}
       <Instagram />
 
-      {/* ── 9. CTA ── */}
+      {/* ── 8. CTA ── */}
       <Cta
         title={<>Let&apos;s Create Something <em className="italic text-accent">Together</em></>}
-        text="Whether it's your wedding day, your business brand, or your online presence — I'm here to help you stand out."
+        text="Whether it's your wedding day, your business brand, or your online presence — I'm here to help you stand out. Pricing and packages are always discussed on the first call."
         ctaLabel="Book a Free Consultation"
       />
     </>
