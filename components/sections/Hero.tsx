@@ -46,39 +46,40 @@ export function Hero({
     >
       {/* Background — full screen, nav floats transparently over it */}
       <div className="absolute inset-0 z-0">
-        <Parallax strength={60} className="absolute inset-0 scale-110">
-          {video ? (
-            <>
-              {/* Poster shown immediately while JS determines which video to load */}
-              {poster && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={poster}
-                  alt=""
-                  fetchPriority="high"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-              )}
-              {/* Video mounts once activeSrc is known — key forces reload on src change */}
-              {activeSrc && (
-                <video
-                  key={activeSrc}
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  autoPlay muted loop playsInline
-                  preload="auto"
-                >
-                  <source src={activeSrc} type="video/mp4" />
-                </video>
-              )}
-            </>
-          ) : image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={image} alt="" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
-          ) : (
-            <Placeholder label={placeholder} />
-          )}
-        </Parallax>
+        {video ? (
+          /* Video — no parallax, avoids GPU re-compositing on every scroll frame */
+          <div className="absolute inset-0">
+            {poster && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={poster}
+                alt=""
+                fetchPriority="high"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            )}
+            {activeSrc && (
+              <video
+                key={activeSrc}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                autoPlay muted loop playsInline
+                preload="auto"
+              >
+                <source src={activeSrc} type="video/mp4" />
+              </video>
+            )}
+          </div>
+        ) : (
+          <Parallax strength={60} className="absolute inset-0 scale-110">
+            {image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={image} alt="" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
+            ) : (
+              <Placeholder label={placeholder} />
+            )}
+          </Parallax>
+        )}
         {/* Strong gradient at bottom for text legibility, subtle at top for nav blending */}
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.5) 50%, rgba(10,10,10,0.95) 100%)' }} />
       </div>
