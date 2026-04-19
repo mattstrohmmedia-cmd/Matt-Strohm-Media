@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { Hero } from '@/components/sections/Hero';
 import { Marquee } from '@/components/sections/Marquee';
+import { Services } from '@/components/sections/Services';
 import { Stats } from '@/components/sections/Stats';
 import { Split } from '@/components/sections/Split';
 import { Cta } from '@/components/sections/Cta';
@@ -8,14 +8,6 @@ import { Instagram } from '@/components/sections/Instagram';
 import { Reveal } from '@/components/primitives/Reveal';
 import { ButtonLink, Arrow } from '@/components/primitives/Button';
 import { testimonials } from '@/content/testimonials';
-
-const homeServices = [
-  { num: '01', title: 'Photography',            href: '/services/photography' },
-  { num: '02', title: 'Videography',            href: '/services/videography' },
-  { num: '03', title: 'Web Design',             href: '/services/web-design' },
-  { num: '04', title: 'Social Media',           href: '/services/social-media' },
-  { num: '05', title: 'AI Business Assistance', href: '/services/ai-business' },
-];
 
 function TestimonialCard({ quote, author, role }: { quote: string; author: string; role?: string }) {
   return (
@@ -54,57 +46,20 @@ export default function HomePage() {
       {/* ── 2. Marquee ── */}
       <Marquee />
 
-      {/* ── 3. Services — editorial list ── */}
-      <section id="services" className="py-28">
-        <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-12">
-          <div className="text-center mb-16">
-            <Reveal>
-              <div className="section-label justify-center mb-4" style={{ display: 'inline-flex' }}>What I Do</div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="section-title">Services</h2>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="section-text mx-auto">From capturing your story to building your online presence — everything you need to stand out.</p>
-            </Reveal>
-          </div>
-
-          <div className="border-t border-white/[0.08]">
-            {homeServices.map((s, i) => (
-              <Reveal key={s.num} delay={i * 0.06}>
-                <Link
-                  href={s.href}
-                  className="group flex items-center gap-6 py-6 border-b border-white/[0.08] hover:border-accent/20 transition-colors duration-300"
-                >
-                  <span className="font-body text-[0.6rem] tracking-[0.2em] text-text-muted/50 w-6 flex-shrink-0 select-none">
-                    {s.num}
-                  </span>
-                  <span
-                    className="font-display flex-1 leading-none text-text-dim group-hover:text-text"
-                    style={{
-                      fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-                      transition: 'color 280ms cubic-bezier(0.23,1,0.32,1)',
-                    }}
-                  >
-                    {s.title}
-                  </span>
-                  <span className="text-accent opacity-0 -translate-x-1.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0">
-                    <Arrow />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.4}>
-            <div className="mt-10 flex justify-center">
-              <ButtonLink href="/contact" variant="ghost">
-                Book a free consultation <Arrow />
-              </ButtonLink>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ── 3. Services ── */}
+      <Services
+        label="What I Do"
+        title="Services"
+        text="From capturing your story to building your online presence — everything you need to stand out."
+        centered
+        services={[
+          { num: '01', title: 'Photography',            text: 'Weddings, events, commercial shoots, portraits — professional imagery that tells your story.',                                         href: '/services/photography' },
+          { num: '02', title: 'Videography',            text: 'Cinematic wedding films, promotional content, event coverage — motion that moves people.',                                            href: '/services/videography' },
+          { num: '03', title: 'Web Design',             text: 'Fast, modern, mobile-first websites built to convert. From tradespeople to hospitality — sites that work hard.',                     href: '/services/web-design' },
+          { num: '04', title: 'Social Media Management',text: 'Content strategy, creation, scheduling, and Meta ad management — grow your brand and reach the right audience.',                    href: '/services/social-media' },
+          { num: '05', title: 'AI Business Assistance', text: 'Leverage AI tools to streamline your operations and automate content — without the tech headache.',                                  href: '/services/ai-business' },
+        ]}
+      />
 
       {/* ── 4. Stats ── */}
       <Stats items={[
