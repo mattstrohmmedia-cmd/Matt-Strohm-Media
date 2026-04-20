@@ -15,7 +15,7 @@ function TestimonialCard({ quote, role }: { quote: string; author?: string; role
       <span className="absolute top-6 left-8 font-display text-[4rem] leading-none text-accent/20 select-none pointer-events-none" aria-hidden>
         &ldquo;
       </span>
-      <p className="font-display italic text-[1.05rem] leading-[1.8] text-text mb-6 pt-6">&ldquo;{quote}&rdquo;</p>
+      <p className="font-display italic text-base leading-[1.75] text-text mb-6 pt-6">&ldquo;{quote}&rdquo;</p>
       {role && <p className="text-xs text-text-muted tracking-[0.1em] uppercase mt-1">{role}</p>}
     </div>
   );
@@ -104,7 +104,7 @@ export default function HomePage() {
               >
                 &ldquo;
               </span>
-              <p className="font-display italic leading-[1.6] text-text max-w-[72ch]" style={{ fontSize: 'clamp(1.2rem,2.5vw,1.85rem)' }}>
+              <p className="font-display italic leading-[1.3] text-text max-w-[68ch]" style={{ fontSize: 'clamp(1.25rem,2.5vw,1.9rem)' }}>
                 &ldquo;{testimonials.wedding.quote}&rdquo;
               </p>
               <footer className="mt-8 flex items-center gap-4">

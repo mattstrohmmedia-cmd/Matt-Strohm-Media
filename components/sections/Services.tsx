@@ -57,7 +57,7 @@ export function ServiceCard({ num, title, text, href, icon }: Service) {
       {icon && <div className="text-3xl mb-5">{icon}</div>}
       <div className="font-display text-[3rem] leading-none text-accent/15 mb-5">{num}</div>
       <h3 className="font-display text-[1.4rem] mb-3 group-hover:text-accent [transition:color_180ms_cubic-bezier(0.23,1,0.32,1)]">{title}</h3>
-      <p className="text-[0.9rem] text-text-dim leading-[1.75] mb-6">{text}</p>
+      <p className="text-base text-text-dim leading-[1.75] mb-6">{text}</p>
       {href && (
         <span className="inline-flex items-center gap-2 text-[0.7rem] font-bold tracking-[0.15em] uppercase text-accent opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 [transition:opacity_250ms_cubic-bezier(0.23,1,0.32,1),transform_250ms_cubic-bezier(0.23,1,0.32,1)]">
           Learn More <Arrow />

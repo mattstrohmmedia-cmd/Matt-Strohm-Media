@@ -112,7 +112,7 @@ export function Hero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-8 text-[1.05rem] text-text-dim leading-[1.8] max-w-[560px]"
+            className="mt-8 text-base text-text-dim leading-[1.75] max-w-[58ch]"
           >
             {subtitle}
           </motion.p>
@@ -135,7 +135,7 @@ export function Hero({
                 </ButtonLink>
               )}
             </div>
-            <div className="hidden md:flex items-center gap-3 text-[0.6rem] tracking-[0.25em] uppercase text-text-muted [writing-mode:vertical-rl]">
+            <div className="hidden md:flex items-center gap-3 text-[0.65rem] tracking-[0.25em] uppercase text-text-muted [writing-mode:vertical-rl]">
               Scroll
               <span className="w-px h-12 bg-text-muted animate-scrollPulse block" />
             </div>

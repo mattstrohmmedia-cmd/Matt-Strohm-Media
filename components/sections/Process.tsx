@@ -12,8 +12,8 @@ export function Process({ steps, title = 'The Process' }: { steps: ProcessStep[]
           <Reveal key={step.title} delay={(i % 4) * 0.1}>
             <div className="relative bg-bg p-10 h-full">
               <div className="font-display text-accent text-2xl mb-4">0{i + 1}</div>
-              <h3 className="font-display text-xl mb-3">{step.title}</h3>
-              <p className="text-sm text-text-dim leading-relaxed">{step.text}</p>
+              <h3 className="font-display text-[1.35rem] mb-3">{step.title}</h3>
+              <p className="text-base text-text-dim leading-[1.75]">{step.text}</p>
             </div>
           </Reveal>
         ))}

@@ -32,12 +32,12 @@ export function Cta({
         style={{ background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 50%)' }}
       />
       <Reveal>
-        <h2 className="font-display font-normal leading-[1.1] relative" style={{ fontSize: 'clamp(2.5rem,6vw,5rem)' }}>
+        <h2 className="font-display font-normal leading-[1.1] tracking-tight relative" style={{ fontSize: 'clamp(2rem,6vw,4.25rem)' }}>
           {title}
         </h2>
       </Reveal>
       <Reveal delay={0.1}>
-        <p className="text-base text-text-dim max-w-[500px] mx-auto mt-6 mb-12 relative">{text}</p>
+        <p className="text-base text-text-dim max-w-[52ch] mx-auto mt-6 mb-12 leading-[1.75] relative">{text}</p>
       </Reveal>
       <Reveal delay={0.2}>
         <ButtonLink href={ctaHref} className="relative">

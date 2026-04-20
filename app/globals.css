@@ -65,11 +65,11 @@
   .section-label::before { content: ''; width: 30px; height: 1px; @apply bg-accent; }
   .section-title {
     @apply font-display font-normal leading-[1.1] tracking-tight;
-    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
   }
   .section-title em { @apply italic text-accent not-italic; font-style: italic; }
   .section-text {
-    @apply text-[0.95rem] text-text-dim leading-[1.8] mt-6 max-w-[560px];
+    @apply text-base text-text-dim leading-[1.75] mt-6 max-w-[60ch];
   }
 
   /* Buttons — specify exact properties (never transition:all), add :active press feedback */

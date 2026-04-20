@@ -26,8 +26,8 @@ export function Testimonial({ quote, author, role, dark = true }: Props) {
       </Reveal>
       <Reveal delay={0.1}>
         <blockquote
-          className="font-display italic leading-[1.5] max-w-[900px] mx-auto mt-8 mb-8 text-text relative"
-          style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.8rem)' }}
+          className="font-display italic leading-[1.3] max-w-[820px] mx-auto mt-8 mb-8 text-text relative"
+          style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.6rem)' }}
         >
           &ldquo;{quote}&rdquo;
         </blockquote>
