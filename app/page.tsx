@@ -32,7 +32,7 @@ export default function HomePage() {
           <>that <em className="italic text-accent">elevates</em></>,
           'your brand.',
         ]}
-        subtitle="Photography, videography, web design, social media, and AI-powered solutions — all under one roof."
+        subtitle="Based in Aberdeenshire. Five disciplines, one point of contact — no agency layers, no brief lost in translation."
         video="/videos/hero-web.mp4"
         mobileVideo="/videos/hero-mobile.mp4"
         poster="/images/hero.jpg"
@@ -49,7 +49,7 @@ export default function HomePage() {
       <Services
         label="What I Do"
         title="Services"
-        text="From capturing your story to building your online presence — everything you need to stand out."
+        text="Pick one service or take the lot. Either way, you deal directly with one person who actually cares about the result."
         centered
         services={[
           { num: '01', title: 'Photography',            text: 'Weddings, events, commercial shoots, portraits — professional imagery that tells your story.',                                         href: '/services/photography' },
@@ -75,7 +75,7 @@ export default function HomePage() {
           <>
             <div className="w-16 h-px bg-accent mb-8 mt-2" />
             <p>I&apos;m a freelance photographer, videographer, and creative based in Aberdeenshire, Scotland. What started with a compact camera as a teenager turned into a full creative business — capturing weddings, building brands, and helping businesses grow online.</p>
-            <p className="mt-5">I combine hands-on creative work with modern tools and strategy. Whether it&apos;s a wedding day, a brand shoot, or getting your business found online — I&apos;m focused on delivering real results, not just pretty pictures.</p>
+            <p className="mt-5">The work varies — weddings one week, a website the next. What stays the same is how seriously I take the result. If it doesn&apos;t do the job, it&apos;s not finished.</p>
           </>
         }
         image="/images/video-bts-cafe-wide-portrait.jpg"
@@ -134,7 +134,7 @@ export default function HomePage() {
       {/* ── 8. CTA ── */}
       <Cta
         title={<>Let&apos;s Create Something <em className="italic text-accent">Together</em></>}
-        text="Whether it's your wedding day, your business brand, or your online presence — I'm here to help you stand out. Pricing and packages are always discussed on the first call."
+        text="Most projects start with a fifteen-minute call. No pitch, no hard sell — just an honest conversation about what you need and whether I can help. Pricing always comes up on that first call."
         ctaLabel="Book a Free Consultation"
       />
     </>

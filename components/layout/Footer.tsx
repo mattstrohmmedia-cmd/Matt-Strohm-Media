@@ -15,7 +15,7 @@ export function Footer() {
             <SocialLink href={site.instagram} label="Instagram" icon={instagramIcon} />
             <SocialLink href="#" label="Facebook" icon={facebookIcon} />
             <SocialLink href="#" label="YouTube" icon={youtubeIcon} />
-            <SocialLink href="#" label="TikTok" icon={tiktokIcon} />
+            <SocialLink href={site.tiktok} label="TikTok" icon={tiktokIcon} />
           </div>
         </div>
 

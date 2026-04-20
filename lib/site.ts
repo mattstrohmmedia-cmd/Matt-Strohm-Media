@@ -4,8 +4,10 @@ export const site = {
   location: 'Aberdeen & Aberdeenshire, Scotland',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mattstrohmmedia.com',
   email: 'Mattstrohmmedia@gmail.com',
-  instagram: 'https://www.instagram.com/mattstrohmmedia/',
-  instagramHandle: '@mattstrohmmedia',
+  instagram: 'https://www.instagram.com/matt_strohm/',
+  instagramHandle: '@matt_strohm',
+  tiktok: 'https://www.tiktok.com/@mattstrohm',
+  tiktokHandle: '@mattstrohm',
   bookingMode: (process.env.NEXT_PUBLIC_BOOKING_MODE || 'form') as 'form' | 'cal',
   calUrl: process.env.NEXT_PUBLIC_CAL_URL || '',
 } as const;

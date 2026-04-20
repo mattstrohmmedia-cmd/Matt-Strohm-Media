@@ -22,7 +22,7 @@ export default function ServicesPage() {
           <>needs to <em className="italic text-accent">stand out</em>.</>,
         ]}
         subtitle="One person, five disciplines — no agency layers, no brief lost in translation."
-        image="/images/Brand HERO.jpg"
+        image="/images/video-bts-barbershop-portrait-1.jpg"
       />
 
       <ServicesPanel

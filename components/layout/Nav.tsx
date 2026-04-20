@@ -87,7 +87,7 @@ export function Nav() {
             role="dialog"
             aria-modal="true"
           >
-            <div className="flex-1 flex flex-col px-8 lg:px-24 pb-10 overflow-hidden" style={{ paddingTop: 'max(6.5rem, 14vh)' }}>
+            <div className="flex-1 flex flex-col px-8 lg:px-24 pb-28 lg:pb-10 overflow-hidden" style={{ paddingTop: 'max(6.5rem, 14vh)' }}>
               {nav.primary.map((link, i) => {
                 const active = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                 return (
