@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Cursor } from '@/components/layout/Cursor';
 import { PageLoader } from '@/components/layout/PageLoader';
 import { StickyBookCta } from '@/components/layout/StickyBookCta';
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { ScrollProgress } from '@/components/layout/ScrollProgress';
 import { pageMetadata } from '@/lib/seo';
 import { site } from '@/lib/site';
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <ScrollToTop />
         <StickyBookCta />
         {gaId && <GoogleAnalytics gaId={gaId} />}
       </body>
