@@ -57,7 +57,7 @@ export function ContactForm() {
         >
           <div className="font-display text-accent text-3xl mb-3">Message sent.</div>
           <p className="text-text-dim text-sm leading-relaxed max-w-sm mx-auto">
-            I&apos;ll be in touch within one working day. Check your inbox — you should have a confirmation email.
+            I&apos;ll be in touch within one working day. Check your inbox for a confirmation email — if you don&apos;t see it, check your spam folder.
           </p>
           <button
             onClick={() => setStatus('idle')}

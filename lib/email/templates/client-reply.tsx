@@ -18,7 +18,7 @@ export function ClientReplyEmail({ name }: { name: string }) {
           </Text>
           <Text style={{ lineHeight: 1.7 }}>
             In the meantime, have a look around the{' '}
-            <Link href="https://www.instagram.com/mattstrohmmedia/" style={{ color: '#c9a84c' }}>
+            <Link href="https://www.instagram.com/matt_strohm/" style={{ color: '#c9a84c' }}>
               Instagram
             </Link>{' '}
             for recent work.
