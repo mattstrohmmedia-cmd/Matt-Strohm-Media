@@ -12,22 +12,13 @@ export async function sendEnquiryEmails(payload: ContactPayload) {
 
   const r = resend();
 
-  const [notify, reply] = await Promise.all([
-    r.emails.send({
-      from: notifyFrom,
-      to: notifyTo,
-      replyTo: payload.email,
-      subject: `New enquiry — ${SERVICE_LABELS[payload.service]} — ${payload.name}`,
-      react: NotifyMattEmail(payload),
-    }),
-    r.emails.send({
-      from: replyFrom,
-      to: payload.email,
-      subject: 'Thanks for your enquiry — Matt Strohm Media',
-      react: ClientReplyEmail({ name: payload.name }),
-    }),
-  ]);
+  const notify = await r.emails.send({
+    from: notifyFrom,
+    to: notifyTo,
+    replyTo: payload.email,
+    subject: `New enquiry — ${SERVICE_LABELS[payload.service]} — ${payload.name}`,
+    react: NotifyMattEmail(payload),
+  });
 
   if (notify.error) throw new Error(`Notify send failed: ${notify.error.message}`);
-  if (reply.error) throw new Error(`Reply send failed: ${reply.error.message}`);
 }
