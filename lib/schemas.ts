@@ -36,7 +36,7 @@ export const contactSchema = z.object({
     .min(10, 'A line or two helps')
     .max(2000, "That's a lot — keep it under 2,000 chars"),
   website: z.string().max(0).optional(), // honeypot
-  turnstileToken: z.string().min(1, 'Please complete the challenge'),
+  turnstileToken: z.string().optional(),
 });
 
 export type ContactPayload = z.infer<typeof contactSchema>;

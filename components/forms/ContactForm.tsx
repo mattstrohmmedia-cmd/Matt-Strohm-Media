@@ -21,11 +21,9 @@ export function ContactForm() {
     formState: { errors },
   } = useForm<ContactPayload>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { service: 'photography', website: '', turnstileToken: '' },
+    defaultValues: { service: 'photography', website: '' },
     mode: 'onBlur',
   });
-
-  const turnstileToken = watch('turnstileToken');
 
   const onSubmit = async (data: ContactPayload) => {
     setStatus('submitting');
@@ -120,14 +118,6 @@ export function ContactForm() {
             <textarea rows={6} className="field-input resize-y" {...register('message')} aria-invalid={!!errors.message} />
           </Field>
 
-          <div>
-            <Turnstile
-              onVerify={(t) => setValue('turnstileToken', t, { shouldValidate: true })}
-              onExpire={() => setValue('turnstileToken', '')}
-            />
-            {errors.turnstileToken && <p className="field-error">{errors.turnstileToken.message}</p>}
-          </div>
-
           {status === 'error' && (
             <div role="alert" className="text-sm text-[#e07a6b] border border-[#e07a6b]/30 bg-[#e07a6b]/5 px-4 py-3">
               {errorMsg}
@@ -136,7 +126,7 @@ export function ContactForm() {
 
           <button
             type="submit"
-            disabled={status === 'submitting' || !turnstileToken}
+            disabled={status === 'submitting'}
             className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === 'submitting' ? 'Sending…' : (<>Send enquiry <Arrow /></>)}

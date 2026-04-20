@@ -38,11 +38,6 @@ export async function POST(req: Request) {
     );
   }
 
-  const turnstile = await verifyTurnstile(data.turnstileToken, ip);
-  if (!turnstile.ok) {
-    return NextResponse.json({ error: 'Challenge failed. Please reload and try again.' }, { status: 400 });
-  }
-
   try {
     await sendEnquiryEmails(data);
   } catch (err) {
