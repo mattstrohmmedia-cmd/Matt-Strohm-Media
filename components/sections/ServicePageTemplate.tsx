@@ -10,9 +10,14 @@ import type { ServicePage } from '@/content/services';
 import { testimonials } from '@/content/testimonials';
 
 export function ServicePageTemplate({ service }: { service: ServicePage }) {
-  const t = service.slug === 'photography'
-    ? testimonials.wedding
-    : testimonials.business;
+  const testimonialMap: Record<string, typeof testimonials[keyof typeof testimonials]> = {
+    photography: testimonials.wedding,
+    videography: testimonials.videography,
+    'web-design': testimonials.webDesign,
+    'social-media': testimonials.socialMedia,
+    'ai-business': testimonials.aiAutomation,
+  };
+  const t = testimonialMap[service.slug] ?? testimonials.business;
 
   return (
     <>

@@ -66,7 +66,7 @@ export default function AboutPage() {
         image="/images/video-edit-premiere-portrait-3.jpg"
       />
 
-      <Testimonial {...testimonials.business} />
+      <Testimonial {...testimonials.socialMedia} />
 
       <Cta title={<>Think we&apos;d work well together?<br/><em className="italic text-accent">Say hi.</em></>} />
     </>

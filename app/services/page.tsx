@@ -39,7 +39,7 @@ export default function ServicesPage() {
         ]}
       />
 
-      <Testimonial {...testimonials.business} />
+      <Testimonial {...testimonials.webDesign} />
 
       <Cta
         title={<>Not sure what you need?<br/><em className="italic text-accent">Let&apos;s figure it out.</em></>}

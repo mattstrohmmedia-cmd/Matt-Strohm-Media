@@ -119,7 +119,7 @@ export default function HomePage() {
           {/* Supporting — 2 col */}
           <div className="grid sm:grid-cols-2 gap-5 border-t border-white/[0.06] pt-10">
             <Reveal delay={0.2} variant="slide-left">
-              <TestimonialCard {...testimonials.business} />
+              <TestimonialCard {...testimonials.aiAutomation} />
             </Reveal>
             <Reveal delay={0.3} variant="slide-right">
               <TestimonialCard {...testimonials.automotive} />
