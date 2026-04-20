@@ -76,8 +76,8 @@ export const portfolio: PortfolioCategory[] = [
     title: 'Web & design',
     blurb: 'Sites built to earn their keep.',
     items: [
-      { title: 'Client Site A', category: 'Web', placeholder: 'Project', aspect: 'wide' },
-      { title: 'Client Site B', category: 'Web', placeholder: 'Project', aspect: 'square' },
+      { title: 'Client Consultation', category: 'Web', image: '/images/web-client-consultation-cafe-landscape.jpg', aspect: 'wide' },
+      { title: 'Mobile Web Design', category: 'Web', image: '/images/web-mobile-website-cityview.jpg', aspect: 'wide' },
     ],
   },
 ];

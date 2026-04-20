@@ -233,7 +233,7 @@ export const servicePages: ServicePage[] = [
     heroLabel: 'Services · 05',
     heroTitle: { before: 'AI that saves you ', accent: 'hours', after: ', not headaches.' },
     heroImage: '/images/web-analytics-dashboard-dark.jpg',
-    introImage: '/images/Portrait shot.jpg',
+    introImage: '/images/ai-workflow-desk-portrait.jpg',
     intro: {
       label: 'What I Do',
       title: 'You don\'t need to understand AI. I do.',
