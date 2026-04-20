@@ -16,7 +16,7 @@ export function Services({
   return (
     <section id="services" className="py-28">
       <div className="max-w-container mx-auto px-6 sm:px-10 lg:px-12">
-        <div className={centered ? 'text-center mb-16' : 'mb-16'}>
+        <div className={centered ? 'text-center mb-20' : 'mb-20'}>
           <Reveal variant={centered ? 'fade' : 'slide-left'}>
             <div className={`section-label mb-6 ${centered ? 'justify-center' : ''}`} style={centered ? { display: 'inline-flex' } : {}}>{label}</div>
           </Reveal>

@@ -21,7 +21,7 @@ export function Faq({ items, title = 'Common Questions' }: { items: FaqItem[]; t
                   +
                 </span>
               </summary>
-              <p className="text-sm text-text-dim leading-[1.8] mt-3 max-w-[640px]">{f.a}</p>
+              <p className="text-base text-text-dim leading-[1.75] mt-3 max-w-[60ch]">{f.a}</p>
             </details>
           </Reveal>
         ))}

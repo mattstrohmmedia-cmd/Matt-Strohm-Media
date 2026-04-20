@@ -18,7 +18,7 @@ type Props = {
 
 export function Split({ label, title, body, image, objectPosition = 'center', aspect = '3/4', placeholder, placeholderCategory = 'split', reverse, cta }: Props) {
   return (
-    <section className="max-w-container mx-auto px-6 sm:px-10 lg:px-12 py-32">
+    <section className="max-w-container mx-auto px-6 sm:px-10 lg:px-12 py-28">
       <div className={`grid gap-10 lg:gap-24 items-center ${reverse ? 'lg:grid-cols-[1fr_1fr] lg:[&>*:first-child]:order-2' : 'lg:grid-cols-[1fr_1fr]'}`}>
         <Reveal variant="slide-left">
           <div className="relative overflow-hidden" style={{ aspectRatio: aspect }}>

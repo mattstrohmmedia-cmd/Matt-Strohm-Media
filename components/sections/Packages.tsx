@@ -23,13 +23,13 @@ export function Packages({ packages }: { packages: Package[] }) {
           </h2>
         </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-[1fr_1.1fr_1fr] gap-5 items-start">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.name} delay={i * 0.1} variant={i === 0 ? 'slide-left' : i === 2 ? 'slide-right' : 'fade'}>
               <div
-                className={`relative flex flex-col h-full p-10 ${
+                className={`relative flex flex-col p-10 ${
                   pkg.highlight
-                    ? 'bg-surface border border-accent/40'
+                    ? 'bg-surface border border-accent/40 py-14'
                     : 'bg-bg border border-white/[0.06]'
                 }`}
               >
@@ -39,7 +39,7 @@ export function Packages({ packages }: { packages: Package[] }) {
                 )}
 
                 {pkg.priceNote && (
-                  <div className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-accent mb-4">
+                  <div className="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-accent mb-4">
                     {pkg.priceNote}
                   </div>
                 )}
@@ -51,7 +51,7 @@ export function Packages({ packages }: { packages: Package[] }) {
 
                 <ul className="space-y-3 mb-10 flex-1">
                   {pkg.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-[0.875rem] text-text-dim leading-snug">
+                    <li key={f} className="flex items-start gap-3 text-base text-text-dim leading-[1.5]">
                       <span className={`mt-0.5 shrink-0 ${pkg.highlight ? 'text-accent' : 'text-text-muted'}`}>
                         <CheckIcon />
                       </span>

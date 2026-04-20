@@ -6,7 +6,7 @@ type Props = { quote: string; author?: string; role?: string; dark?: boolean };
 
 export function Testimonial({ quote, author, role, dark = true }: Props) {
   return (
-    <section className={`relative text-center px-6 sm:px-10 lg:px-12 py-32 overflow-hidden ${dark ? 'bg-bg-alt' : ''}`}>
+    <section className={`relative text-center px-6 sm:px-10 lg:px-12 py-40 overflow-hidden ${dark ? 'bg-bg-alt' : ''}`}>
       {/* Large decorative quote mark */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}

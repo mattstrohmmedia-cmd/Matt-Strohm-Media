@@ -8,7 +8,7 @@ export function Footer() {
       <div className="max-w-container mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
           <Monogram size={72} />
-          <p className="text-sm text-text-dim mt-6 max-w-[300px] leading-relaxed">
+          <p className="text-sm text-text-dim mt-6 max-w-[300px] leading-[1.75]">
             Creative services based in Aberdeen &amp; Aberdeenshire, Scotland.
           </p>
           <div className="flex gap-3 mt-6">
