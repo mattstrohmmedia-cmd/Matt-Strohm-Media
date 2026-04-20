@@ -6,8 +6,8 @@ import { pageMetadata } from '@/lib/seo';
 import { testimonials } from '@/content/testimonials';
 
 export const metadata = pageMetadata({
-  title: 'Services — Photography, Video, Web & More',
-  description: 'Photography, videography, web design, social media management, and AI business tools — all under one roof in Aberdeenshire.',
+  title: 'Creative Services — Aberdeen & Aberdeenshire',
+  description: 'Photography, videography, web design, social media and AI automation — all under one roof. No agency layers, no lost briefs.',
   path: '/services',
 });
 

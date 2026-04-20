@@ -3,8 +3,8 @@ import { getServicePage } from '@/content/services';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata = pageMetadata({
-  title: 'Social Media Management — Aberdeen & Aberdeenshire',
-  description: 'Content strategy, creation, scheduling, Meta Ads and reporting. Social that sells, not just scrolls.',
+  title: 'Social Media Management, Aberdeen',
+  description: 'Content strategy, creation, scheduling and Meta Ads for businesses in Aberdeen & Aberdeenshire. Social media that brings in real enquiries, not just likes.',
   path: '/services/social-media',
 });
 

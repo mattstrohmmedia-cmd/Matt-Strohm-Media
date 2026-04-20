@@ -7,8 +7,8 @@ import { contactFaqs } from '@/content/faqs';
 import { site } from '@/lib/site';
 
 export const metadata = pageMetadata({
-  title: 'Contact',
-  description: 'Start a conversation about your wedding, business, or project. First call is always free.',
+  title: 'Contact — Book a Free Consultation, Aberdeen',
+  description: 'Get in touch about your wedding, brand shoot, website or social media. Based in Aberdeen — happy to travel. First call is always free.',
   path: '/contact',
 });
 

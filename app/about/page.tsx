@@ -8,8 +8,8 @@ import { pageMetadata } from '@/lib/seo';
 import { testimonials } from '@/content/testimonials';
 
 export const metadata = pageMetadata({
-  title: 'About',
-  description: 'Creative based in Aberdeenshire helping brides and businesses look their best. No agency layers — you work directly with me.',
+  title: 'About Matthew Strohm — Photographer & Creative, Aberdeen',
+  description: 'Freelance photographer, videographer and creative based in Aberdeenshire. You work directly with me — no agency layers, no account managers.',
   path: '/about',
 });
 

@@ -28,7 +28,7 @@ const sans = Syne({
 
 export const metadata: Metadata = pageMetadata({
   title: site.name,
-  description: 'Photography, videography, web, social and AI services for businesses and brides in Aberdeen and Aberdeenshire.',
+  description: 'Photographer, videographer, web designer & social media manager based in Aberdeen & Aberdeenshire. Weddings, brands, and businesses — all under one roof.',
   path: '/',
 });
 
@@ -38,6 +38,49 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'LocalBusiness',
+      '@id': `${site.url}/#business`,
+      name: site.name,
+      description: 'Photography, videography, web design, social media management, and AI business automation based in Aberdeen & Aberdeenshire, Scotland.',
+      url: site.url,
+      email: site.email,
+      logo: `${site.url}/images/logos/msm.png`,
+      image: `${site.url}/images/hero.jpg`,
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Aberdeenshire',
+        addressCountry: 'GB',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 57.1497,
+        longitude: -2.0943,
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Aberdeen' },
+        { '@type': 'AdministrativeArea', name: 'Aberdeenshire' },
+        { '@type': 'Country', name: 'Scotland' },
+      ],
+      serviceType: ['Photography', 'Videography', 'Web Design', 'Social Media Management', 'AI Business Automation'],
+      sameAs: [site.instagram],
+      priceRange: '££',
+    },
+    {
+      '@type': 'Person',
+      '@id': `${site.url}/#person`,
+      name: 'Matthew Strohm',
+      jobTitle: 'Photographer, Videographer & Creative Director',
+      worksFor: { '@id': `${site.url}/#business` },
+      url: `${site.url}/about`,
+      sameAs: [site.instagram],
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   return (
@@ -45,6 +88,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Preload homepage hero poster — LCP image on the most-visited page */}
         <link rel="preload" as="image" href="/images/hero.jpg" fetchPriority="high" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
       </head>
       <body>
         <ScrollProgress />

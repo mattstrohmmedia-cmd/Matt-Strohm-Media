@@ -9,8 +9,8 @@ import { portfolio } from '@/content/portfolio';
 import { testimonials } from '@/content/testimonials';
 
 export const metadata = pageMetadata({
-  title: 'Portfolio',
-  description: 'Selected photography, videography, commercial and web work from across Aberdeen, Aberdeenshire and Scotland.',
+  title: 'Portfolio — Photography & Video Work, Aberdeen',
+  description: 'Selected photography, videography, commercial and web work from across Aberdeen, Aberdeenshire and Scotland. Weddings, brands, events, and automotive.',
   path: '/portfolio',
 });
 
