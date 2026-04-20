@@ -27,7 +27,7 @@ export const portfolio: PortfolioCategory[] = [
     title: 'Portraits & brand',
     blurb: 'Headshots, personal brand, and team shoots that look like real people.',
     items: [
-      { title: 'Portrait Session', category: 'Portraits', image: '/images/Portraits PORT/IMG_1941.jpg', aspect: 'wide' },
+      { title: 'Portrait Session', category: 'Portraits', image: '/images/Portraits PORT/IMG_1941.jpg', aspect: 'wide', objectPosition: 'top' },
       { title: 'Portrait Session', category: 'Portraits', image: '/images/Portraits PORT/IMG_2071.jpg', aspect: 'square', objectPosition: 'top' },
       { title: 'Portrait Session', category: 'Portraits', image: '/images/Portraits PORT/IMG_2100.jpg', aspect: 'square', objectPosition: 'top' },
     ],
