@@ -18,7 +18,7 @@ type Props = { onVerify: (token: string) => void; onExpire?: () => void };
 export function Turnstile({ onVerify, onExpire }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const idRef = useRef<string>('');
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+  const siteKey = '0x4AAAAAADANtjlbo0BgL3t-';
 
   useEffect(() => {
     const mount = () => {
