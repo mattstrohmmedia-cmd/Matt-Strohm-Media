@@ -9,14 +9,13 @@ import { Reveal } from '@/components/primitives/Reveal';
 import { ButtonLink, Arrow } from '@/components/primitives/Button';
 import { testimonials } from '@/content/testimonials';
 
-function TestimonialCard({ quote, author, role }: { quote: string; author: string; role?: string }) {
+function TestimonialCard({ quote, role }: { quote: string; author?: string; role?: string }) {
   return (
     <div className="relative bg-surface border border-white/[0.06] p-10 h-full">
       <span className="absolute top-6 left-8 font-display text-[4rem] leading-none text-accent/20 select-none pointer-events-none" aria-hidden>
         &ldquo;
       </span>
       <p className="font-display italic text-[1.05rem] leading-[1.8] text-text mb-6 pt-6">&ldquo;{quote}&rdquo;</p>
-      <p className="text-sm font-semibold text-text">{author}</p>
       {role && <p className="text-xs text-text-muted tracking-[0.1em] uppercase mt-1">{role}</p>}
     </div>
   );
@@ -65,7 +64,7 @@ export default function HomePage() {
       <Stats items={[
         { num: '100+', label: 'Projects Delivered' },
         { num: '50+',  label: 'Happy Clients' },
-        { num: '5.0★', label: 'Google Rating' },
+        { num: '4.8★', label: 'Client Feedback' },
       ]} />
 
       {/* ── 5. About ── */}
@@ -110,7 +109,6 @@ export default function HomePage() {
               </p>
               <footer className="mt-8 flex items-center gap-4">
                 <div className="w-8 h-px bg-accent flex-shrink-0" />
-                <cite className="not-italic text-sm font-semibold text-text">{testimonials.wedding.author}</cite>
                 {testimonials.wedding.role && (
                   <span className="text-xs text-text-muted tracking-[0.1em] uppercase">{testimonials.wedding.role}</span>
                 )}

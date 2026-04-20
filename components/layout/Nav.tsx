@@ -85,7 +85,7 @@ export function Nav() {
             role="dialog"
             aria-modal="true"
           >
-            <div className="flex-1 flex flex-col px-8 lg:px-24 pb-12 overflow-y-auto" style={{ paddingTop: 'max(6.5rem, 14vh)' }}>
+            <div className="flex-1 flex flex-col px-8 lg:px-24 pb-10 overflow-hidden" style={{ paddingTop: 'max(6.5rem, 14vh)' }}>
               {nav.primary.map((link, i) => {
                 const active = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
                 return (
@@ -131,7 +131,7 @@ export function Nav() {
               </motion.div>
             </div>
 
-            <div className="hidden lg:block w-[45%] relative overflow-hidden bg-surface">
+            <div className="hidden lg:block w-[45%] relative overflow-hidden bg-bg">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={hoverIdx}

@@ -1,17 +1,14 @@
 export const testimonials = {
   wedding: {
-    quote: 'Matt captured our wedding day perfectly. Every photo tells a story and we couldn\'t be happier with how it all turned out.',
-    author: 'Anna & Kierran',
+    quote: 'We had no idea what to expect on the day but Matt made everything feel natural. The photos are beyond what we could have hoped for — we go back and look through them all the time.',
     role: 'Wedding Photography',
   },
   business: {
-    quote: 'Matt rebuilt our site and started running our socials. Enquiries doubled in three months and I haven\'t had to touch Canva since.',
-    author: 'Sarah M.',
+    quote: 'Matt took over our website and social media and within a few months the enquiries started coming in on their own. It genuinely changed how the business looks online.',
     role: 'Skincare Brand',
   },
   automotive: {
-    quote: 'Shots came back looking like a magazine spread. Stopped the scroll every single time we posted.',
-    author: 'James R.',
+    quote: 'Every shot came back looking like it belonged in a magazine. The cars have never looked better and the engagement on every post since has been ridiculous.',
     role: 'Automotive Client',
   },
 } as const;

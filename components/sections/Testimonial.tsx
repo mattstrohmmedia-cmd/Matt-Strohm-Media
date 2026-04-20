@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import { Reveal } from '@/components/primitives/Reveal';
 
-type Props = { quote: string; author: string; role?: string; dark?: boolean };
+type Props = { quote: string; author?: string; role?: string; dark?: boolean };
 
 export function Testimonial({ quote, author, role, dark = true }: Props) {
   return (
@@ -32,9 +32,11 @@ export function Testimonial({ quote, author, role, dark = true }: Props) {
           &ldquo;{quote}&rdquo;
         </blockquote>
       </Reveal>
-      <Reveal delay={0.2}>
-        <p className="text-sm font-semibold text-text-dim">{author}</p>
-      </Reveal>
+      {author && (
+        <Reveal delay={0.2}>
+          <p className="text-sm font-semibold text-text-dim">{author}</p>
+        </Reveal>
+      )}
       {role && (
         <Reveal delay={0.3}>
           <p className="text-xs text-text-muted tracking-[0.1em] uppercase mt-1">{role}</p>

@@ -3,7 +3,7 @@ export const site = {
   tagline: 'Creative media that elevates your brand',
   location: 'Aberdeen & Aberdeenshire, Scotland',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://mattstrohmmedia.com',
-  email: 'hello@mattstrohmmedia.com',
+  email: 'Mattstrohmmedia@gmail.com',
   instagram: 'https://www.instagram.com/mattstrohmmedia/',
   instagramHandle: '@mattstrohmmedia',
   bookingMode: (process.env.NEXT_PUBLIC_BOOKING_MODE || 'form') as 'form' | 'cal',
