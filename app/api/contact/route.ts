@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   }
 
   const ip = clientIp(req.headers);
-  const limit = rateLimit(`contact:${ip}`, 5, 60 * 60 * 1000);
+  const limit = rateLimit(`contact:${ip}`, 50, 60 * 60 * 1000);
   if (!limit.ok) {
     return NextResponse.json(
       { error: 'Too many submissions — try again in an hour.' },
