@@ -33,7 +33,7 @@ export default function AboutPage() {
             <p className="mt-6">I work with one client at a time, care about the outcome more than the price tag, and speak to you like a human. That&apos;s about it.</p>
           </>
         }
-        image="/images/self portrait.png"
+        image="/images/self portrait.jpg"
       />
 
       <Services

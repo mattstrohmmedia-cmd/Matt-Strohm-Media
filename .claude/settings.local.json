@@ -10,7 +10,14 @@
       "Bash(git commit -m ':*)",
       "Bash(git push:*)",
       "Bash(sort -k5 -hr)",
-      "Read(//c/Users/matts/OneDrive/Desktop/website images/**)"
+      "Read(//c/Users/matts/OneDrive/Desktop/website images/**)",
+      "Bash(python:*)",
+      "Bash(find /c/Users/matts/matt-strohm-media/public/images -maxdepth 1 -type f \\\\\\( -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" \\\\\\) -exec ls -la {} \\\\;)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(du -sh /c/Users/matts/matt-strohm-media/public/images/*/)",
+      "Bash(find /c/Users/matts/matt-strohm-media/public/images -mindepth 2 -type f \\\\\\( -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" -o -name \"*.JPG\" \\\\\\) -exec ls -la {} \\\\;)",
+      "Bash(find:*)",
+      "Bash(xxd /c/Users/matts/matt-strohm-media/components/sections/Instagram.tsx)"
     ]
   }
 }

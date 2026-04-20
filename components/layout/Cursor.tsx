@@ -23,11 +23,20 @@ export function Cursor() {
     let ringX = targetX, ringY = targetY;
     let dotX = targetX, dotY = targetY;
     let raf = 0;
+    let paused = false;
 
     ring.style.opacity = '1';
     dot.style.opacity = '1';
 
+    const onVisibility = () => {
+      paused = document.hidden;
+      if (!paused && raf === 0) raf = requestAnimationFrame(tick);
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     const tick = () => {
+      raf = 0;
+      if (paused) return;
       if (reducedMotion) {
         // Snap directly — no smoothing
         ring.style.transform = `translate3d(${targetX - 8}px, ${targetY - 8}px, 0)`;
@@ -81,6 +90,7 @@ export function Cursor() {
       document.removeEventListener('mouseout', onOut);
       document.removeEventListener('mousedown', onDown);
       document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('visibilitychange', onVisibility);
       document.documentElement.removeEventListener('mouseleave', onLeave);
       document.documentElement.removeEventListener('mouseenter', onEnter);
     };

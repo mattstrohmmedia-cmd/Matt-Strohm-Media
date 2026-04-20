@@ -20,7 +20,7 @@ const serif = Instrument_Serif({
   display: 'swap',
 });
 const sans = Syne({
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
@@ -42,6 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html lang="en-GB" className={`${serif.variable} ${sans.variable}`}>
+      <head>
+        {/* Preload homepage hero poster — LCP image on the most-visited page */}
+        <link rel="preload" as="image" href="/images/hero.jpg" fetchPriority="high" />
+      </head>
       <body>
         <ScrollProgress />
         <PageLoader />
