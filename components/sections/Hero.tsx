@@ -12,6 +12,7 @@ type Props = {
   titleLines: ReactNode[];
   subtitle?: string;
   image?: string;
+  imagePosition?: string;
   video?: string;
   mobileVideo?: string;
   poster?: string;
@@ -24,7 +25,7 @@ type Props = {
 };
 
 export function Hero({
-  label, titleLines, subtitle, image, video, mobileVideo, poster, placeholder,
+  label, titleLines, subtitle, image, imagePosition = 'center', video, mobileVideo, poster, placeholder,
   ctaHref = '/contact', ctaLabel = 'Book a free consultation',
   secondaryHref, secondaryLabel,
   short = false,
@@ -74,7 +75,7 @@ export function Hero({
           <Parallax strength={60} className="absolute inset-0 scale-110">
             {image ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={image} alt="" fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
+              <img src={image} alt="" fetchPriority="high" decoding="async" className="w-full h-full object-cover" style={{ objectPosition: imagePosition }} />
             ) : (
               <Placeholder label={placeholder} />
             )}

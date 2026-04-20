@@ -22,6 +22,7 @@ export default function PortfolioPage() {
         label="Selected Work"
         titleLines={[<>Recent</>, <><em className="italic text-accent">projects</em>.</>]}
         image="/images/Portfolio HERO.jpg"
+        imagePosition="center 70%"
       />
 
       <section className="max-w-container mx-auto px-6 sm:px-10 lg:px-12 pt-16">
