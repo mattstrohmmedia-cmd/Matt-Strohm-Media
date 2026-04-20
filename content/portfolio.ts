@@ -42,8 +42,8 @@ export const portfolio: PortfolioCategory[] = [
       { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1463.jpg', aspect: 'square' },
       { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1488.jpg', aspect: 'square' },
       { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1588.jpg', aspect: 'wide' },
-      { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1626.jpg', aspect: 'square' },
-      { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1656.jpg', aspect: 'square' },
+      { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1626.jpg', aspect: 'wide' },
+      { title: 'Automotive', category: 'Automotive', image: '/images/Automotive PORT/IMG_1656.jpg', aspect: 'wide' },
     ],
   },
   {
