@@ -27,9 +27,11 @@ export function Nav() {
   // Images for the menu right panel — keyed by nav.primary index
   // Home=0, About=1, Portfolio=2, Services=3, Contact=4
   const navImages: Record<number, string> = {
-    1: '/images/self portrait.png',
+    0: '/images/video-bts-cafe-latte-portrait-2.jpg',
+    1: '/images/video-bts-barbershop-portrait-2.jpg',
     2: '/images/Portfolio HERO.jpg',
-    3: '/images/Automotive HERO.jpg',
+    3: '/images/video-edit-timeline-closeup.jpg',
+    4: '/images/video-edit-premiere-portrait-2.jpg',
   };
 
   return (

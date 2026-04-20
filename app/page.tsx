@@ -78,7 +78,7 @@ export default function HomePage() {
             <p className="mt-5">I combine hands-on creative work with modern tools and strategy. Whether it&apos;s a wedding day, a brand shoot, or getting your business found online — I&apos;m focused on delivering real results, not just pretty pictures.</p>
           </>
         }
-        image="/images/self portrait.png"
+        image="/images/video-bts-cafe-wide-portrait.jpg"
         cta={<ButtonLink href="/about" variant="ghost">Read My Story <Arrow /></ButtonLink>}
       />
 

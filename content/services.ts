@@ -80,7 +80,7 @@ export const servicePages: ServicePage[] = [
     num: '02',
     heroLabel: 'Services · 02',
     heroTitle: { before: 'Video that moves ', accent: 'people', after: ', not just pixels.' },
-    heroImage: '/images/Event Hero.jpg',
+    heroImage: '/images/video-bts-gym-wide-1.jpg',
     introImage: '/images/Brand HERO.jpg',
     intro: {
       label: 'What I Offer',
@@ -134,8 +134,8 @@ export const servicePages: ServicePage[] = [
     num: '03',
     heroLabel: 'Services · 03',
     heroTitle: { before: 'Websites that actually ', accent: 'earn their keep', after: '.' },
-    heroImage: '/images/Landscape shot.jpg',
-    introImage: '/images/Extra.jpg',
+    heroImage: '/images/web-laptop-finance-mockup.jpg',
+    introImage: '/images/web-client-consultation-cafe-portrait.jpg',
     intro: {
       label: 'What\'s Included',
       title: 'Less pretty brochure, more silent salesperson.',
@@ -183,8 +183,8 @@ export const servicePages: ServicePage[] = [
     num: '04',
     heroLabel: 'Services · 04',
     heroTitle: { before: 'Social that ', accent: 'sells', after: ', not just scrolls.' },
-    heroImage: '/images/Event Hero.jpg',
-    introImage: '/images/Event Shot.jpg',
+    heroImage: '/images/video-bts-barbershop-wide.jpg',
+    introImage: '/images/video-bts-gimbal-closeup-portrait.jpg',
     intro: {
       label: 'What I Do',
       title: 'Consistent posts. Real results. No fluff.',
@@ -232,7 +232,7 @@ export const servicePages: ServicePage[] = [
     num: '05',
     heroLabel: 'Services · 05',
     heroTitle: { before: 'AI that saves you ', accent: 'hours', after: ', not headaches.' },
-    heroImage: '/images/LANDSCAPE.jpeg',
+    heroImage: '/images/web-analytics-dashboard-dark.jpg',
     introImage: '/images/Portrait shot.jpg',
     intro: {
       label: 'What I Do',

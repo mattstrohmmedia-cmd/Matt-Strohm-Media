@@ -19,7 +19,7 @@ export default function ContactPage() {
         short
         label="Contact"
         titleLines={[<>Let&apos;s</>, <><em className="italic text-accent">talk</em>.</>]}
-        image="/images/BTS Shot.png"
+        image="/images/video-edit-premiere-wide.jpg"
       />
 
       <section className="max-w-container mx-auto px-6 sm:px-10 lg:px-12 py-24">

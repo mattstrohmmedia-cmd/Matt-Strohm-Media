@@ -20,7 +20,7 @@ export default function AboutPage() {
         short
         label="About"
         titleLines={[<>The story behind</>, <>the <em className="italic text-accent">work</em>.</>]}
-        placeholder="Portrait / Behind the scenes"
+        image="/images/video-bts-gym-wide-2.jpg"
       />
 
       <Split
@@ -63,7 +63,7 @@ export default function AboutPage() {
             <p className="mt-6">Once we&apos;re aligned, I plan it out, deliver it on time, and check in after. No ghosting, no surprise invoices.</p>
           </>
         }
-        image="/images/BTS Shot.png"
+        image="/images/video-edit-premiere-portrait-3.jpg"
       />
 
       <Testimonial {...testimonials.business} />
