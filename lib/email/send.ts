@@ -5,8 +5,8 @@ import type { ContactPayload } from '@/lib/schemas';
 import { SERVICE_LABELS } from '@/lib/schemas';
 
 export async function sendEnquiryEmails(payload: ContactPayload) {
-  const notifyFrom = process.env.EMAIL_FROM_NOTIFY || 'Matt Strohm Media <onboarding@resend.dev>';
-  const replyFrom = process.env.EMAIL_FROM_REPLY || 'Matt Strohm Media <onboarding@resend.dev>';
+  const notifyFrom = process.env.EMAIL_FROM_NOTIFY || 'Matt Strohm Media <enquiries@mattstrohmmedia.com>';
+  const replyFrom = process.env.EMAIL_FROM_REPLY || 'Matt Strohm Media <enquiries@mattstrohmmedia.com>';
   const notifyTo = process.env.NOTIFY_EMAIL;
   if (!notifyTo) throw new Error('NOTIFY_EMAIL not set');
 
@@ -21,4 +21,14 @@ export async function sendEnquiryEmails(payload: ContactPayload) {
   });
 
   if (notify.error) throw new Error(`Notify send failed: ${notify.error.message}`);
+
+  console.log('[contact] sending reply to', payload.email);
+  const reply = await r.emails.send({
+    from: replyFrom,
+    to: payload.email,
+    subject: `Got your message — Matt Strohm Media`,
+    react: ClientReplyEmail({ name: payload.name }),
+  });
+
+  if (reply.error) throw new Error(`Reply send failed: ${reply.error.message}`);
 }
