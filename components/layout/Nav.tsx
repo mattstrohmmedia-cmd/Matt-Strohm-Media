@@ -48,7 +48,7 @@ export function Nav() {
             className="flex items-center gap-4"
           >
             <Monogram size={36} data-nav-logo />
-            <span className="hidden sm:block font-display text-[0.88rem] tracking-[0.18em] uppercase whitespace-nowrap font-bold">
+            <span className="block font-display text-[0.75rem] sm:text-[0.88rem] tracking-[0.18em] uppercase whitespace-nowrap font-bold">
               <span className="text-white">Matt Strohm </span><span className="text-accent">Media</span>
             </span>
           </motion.div>
