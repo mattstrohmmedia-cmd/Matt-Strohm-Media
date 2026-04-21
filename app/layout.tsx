@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Instrument_Serif, Syne } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { Analytics } from '@vercel/analytics/next';
 import { Nav } from '@/components/layout/Nav';
 import { Footer } from '@/components/layout/Footer';
 import { Cursor } from '@/components/layout/Cursor';
@@ -103,6 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ScrollToTop />
         <StickyBookCta />
         {gaId && <GoogleAnalytics gaId={gaId} />}
+        <Analytics />
       </body>
     </html>
   );

@@ -22,7 +22,6 @@ export async function sendEnquiryEmails(payload: ContactPayload) {
 
   if (notify.error) throw new Error(`Notify send failed: ${notify.error.message}`);
 
-  console.log('[contact] sending reply to', payload.email);
   const reply = await r.emails.send({
     from: replyFrom,
     to: payload.email,
