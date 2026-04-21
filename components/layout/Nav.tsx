@@ -131,6 +131,10 @@ export function Nav() {
                   </Link>
                 ))}
               </motion.div>
+
+              <div className="mt-auto pt-6 text-xs text-text-muted tracking-wide">
+                {site.location} · <a href={`mailto:${site.email}`} className="text-accent hover:text-accent-bright">{site.email}</a>
+              </div>
             </div>
 
             <div className="hidden lg:block w-[45%] relative overflow-hidden bg-bg">
@@ -185,9 +189,6 @@ export function Nav() {
               </AnimatePresence>
             </div>
 
-            <div className="absolute bottom-28 lg:bottom-12 left-8 lg:left-24 text-xs text-text-muted tracking-wide">
-              {site.location} · <a href={`mailto:${site.email}`} className="text-accent hover:text-accent-bright">{site.email}</a>
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
