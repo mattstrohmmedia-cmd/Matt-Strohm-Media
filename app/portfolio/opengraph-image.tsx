@@ -27,29 +27,25 @@ export default async function OpengraphImage() {
   return new ImageResponse(
     (
       <div style={{ width: '100%', height: '100%', display: 'flex', position: 'relative', overflow: 'hidden' }}>
-        <img src={imgBase64} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(110deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.8) 50%, rgba(5,5,5,0.3) 100%)', display: 'flex' }} />
+        <img src={imgBase64} style={{ position: 'absolute', right: 0, top: 0, width: '52%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(5,5,5,1) 0%, rgba(5,5,5,1) 48%, rgba(5,5,5,0.5) 65%, rgba(5,5,5,0) 100%)', display: 'flex' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '50%', background: '#050505', display: 'flex' }} />
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, background: '#c9a84c', display: 'flex' }} />
 
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '56px 80px' }}>
-
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ width: 32, height: 1, background: '#c9a84c', display: 'flex' }} />
-            <span style={{ fontSize: 13, letterSpacing: 6, textTransform: 'uppercase', color: '#c9a84c', fontFamily: 'sans-serif' }}>
-              Matt Strohm Media
-            </span>
+            <span style={{ fontSize: 13, letterSpacing: 6, textTransform: 'uppercase', color: '#c9a84c', fontFamily: 'sans-serif' }}>Matt Strohm Media</span>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 13, letterSpacing: 6, textTransform: 'uppercase', color: '#5a5550', fontFamily: 'sans-serif', marginBottom: 16 }}>Portfolio</div>
             <span style={{ fontSize: 96, lineHeight: 1, color: '#eae6df', fontFamily: 'Instrument Serif', fontWeight: 400 }}>The</span>
-            <span style={{ fontSize: 96, lineHeight: 1, color: '#c9a84c', fontFamily: 'Instrument Serif', fontStyle: 'italic', fontWeight: 400 }}>Work</span>
+            <span style={{ fontSize: 96, lineHeight: 1, color: '#c9a84c', fontFamily: 'Instrument Serif', fontStyle: 'italic', fontWeight: 400 }}>Work.</span>
+            <div style={{ fontSize: 17, color: '#6a6560', fontFamily: 'sans-serif', marginTop: 20 }}>Weddings · Brands · Events · Portraits</div>
           </div>
 
-          <span style={{ fontSize: 13, color: '#3a3530', letterSpacing: 3, textTransform: 'uppercase', fontFamily: 'sans-serif' }}>
-            mattstrohmmedia.com
-          </span>
-
+          <span style={{ fontSize: 13, color: '#3a3530', letterSpacing: 3, textTransform: 'uppercase', fontFamily: 'sans-serif' }}>mattstrohmmedia.com</span>
         </div>
       </div>
     ),
