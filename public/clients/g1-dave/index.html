@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G1 Window Cleaner — Proposal from Matt Strohm Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-dim: #9a7a35;
+    --bg: #111111;
+    --bg2: #191919;
+    --bg3: #222222;
+    --border: #2a2a2a;
+    --border-gold: rgba(201,168,76,0.25);
+    --text: #f0f0f0;
+    --muted: #888;
+    --green: #5ec47a;
+    --green-border: rgba(94,196,122,0.3);
+    --green-bg: rgba(94,196,122,0.07);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 0 80px;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(17,17,17,0.97);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 48px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 17px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .nav-right {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .container { max-width: 940px; margin: 0 auto; padding: 40px 32px 0; }
+
+  /* HERO */
+  .hero {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 46px;
+    letter-spacing: 1.5px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .hero-intro {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.7;
+    max-width: 640px;
+  }
+  .hero-intro strong { color: var(--gold); font-weight: 500; }
+
+  /* SECTION */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* CARDS */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .card.full { grid-column: 1 / -1; }
+  .card.accent { border-color: var(--border-gold); background: rgba(201,168,76,0.05); }
+  .card.green-card { border-color: var(--green-border); background: var(--green-bg); }
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .card-value {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .card-value strong { color: var(--gold); font-weight: 500; }
+  .card-value ul { list-style: none; padding: 0; margin: 4px 0 0; }
+  .card-value li {
+    padding: 3px 0 3px 16px;
+    position: relative;
+    font-size: 13px;
+  }
+  .card-value li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 11px;
+    top: 4px;
+  }
+  .card-value li.check::before { content: '✓'; color: var(--green); }
+
+  /* PACKAGE BLOCK */
+  .package-block {
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .package-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    gap: 18px;
+  }
+  .package-tag {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--border-gold);
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+    display: inline-block;
+  }
+  .package-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1.5px;
+    color: var(--text);
+    line-height: 1;
+  }
+  .package-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .package-price {
+    text-align: right;
+    white-space: nowrap;
+  }
+  .package-price-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .package-price-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .package-body { padding: 18px 24px; }
+  .package-body .grid-2 { gap: 12px; }
+
+  /* UPSELL TRACK */
+  .track {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg2);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .track.featured { border-color: var(--border-gold); background: rgba(201,168,76,0.04); }
+  .track-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .track.featured .track-header { border-bottom-color: rgba(201,168,76,0.15); }
+  .track-badge {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  .track-badge.starter { background: rgba(94,196,122,0.1); border: 1px solid var(--green-border); color: var(--green); }
+  .track-badge.growth { background: rgba(201,168,76,0.12); border: 1px solid var(--border-gold); color: var(--gold); }
+  .track-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    line-height: 1;
+  }
+  .track-sub { font-size: 12px; color: var(--muted); margin-top: 3px; }
+  .track-price-area { text-align: right; }
+  .track-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .track-price-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .track-timeline {
+    display: flex;
+    padding: 14px 20px;
+    gap: 0;
+  }
+  .timeline-step {
+    flex: 1;
+    padding: 10px 14px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .timeline-step:last-child { border-right: none; }
+  .timeline-mo {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .timeline-title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .timeline-price { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); }
+  .timeline-items { font-size: 11px; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+
+  /* ADDONS */
+  .addon {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid var(--border-gold);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+  .addon-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .addon-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+  .addon-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .addon-price small {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 400;
+    display: block;
+    letter-spacing: 0;
+    margin-top: 2px;
+  }
+
+  /* CONTRACT DISCOUNTS */
+  .contracts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .contract-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px;
+    text-align: center;
+  }
+  .contract-card.featured-contract {
+    border-color: var(--border-gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .contract-term {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1.5px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .contract-discount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .contract-card.featured-contract .contract-discount { color: var(--green); }
+  .contract-note { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .contract-example {
+    margin-top: 10px;
+    font-size: 11px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid var(--border-gold);
+    border-radius: 4px;
+    padding: 6px 10px;
+    color: var(--gold);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* WHY NOW */
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .reason {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .reason-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .reason-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .reason-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* NEXT STEPS */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+  }
+  .steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--gold);
+    min-width: 28px;
+    line-height: 1.1;
+  }
+  .step-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+  .step-desc { font-size: 12px; color: var(--muted); }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.03));
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 28px 32px;
+    text-align: center;
+  }
+  .cta-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .cta-sub { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+  .cta-contact { font-size: 14px; color: var(--gold); font-weight: 500; }
+  .cta-contact a { color: var(--gold); text-decoration: none; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* GUARANTEE GRID */
+  .guarantee-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .guarantee-tile {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    text-align: center;
+  }
+  .guarantee-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .guarantee-desc { font-size: 12px; color: var(--muted); }
+
+  /* PRICING TABLE */
+  .pricing-table-wrap { border-radius: 6px; }
+
+  /* MID CTA */
+  .mid-cta {
+    background: var(--bg2);
+    border: 1px solid var(--border-gold);
+    border-radius: 8px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .mid-cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #111;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 10px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 720px) {
+    body { font-size: 15px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .contracts { grid-template-columns: 1fr; }
+    .reasons { grid-template-columns: 1fr; }
+    .guarantee-grid { grid-template-columns: 1fr; }
+    .package-header, .track-header { flex-direction: column; align-items: flex-start; }
+    .package-price, .track-price-area { text-align: left; }
+    .container { padding: 24px 18px 0; }
+    .hero-name { font-size: 32px; }
+    .nav { padding: 0 18px; }
+    .nav-right { display: none; }
+    .track-timeline { flex-direction: column; padding: 12px 16px; }
+    .timeline-step { border-right: none; border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .timeline-step:last-child { border-bottom: none; }
+    .addon { grid-template-columns: 1fr; }
+    .addon-price { text-align: left; margin-top: 8px; }
+    .pricing-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pricing-table-wrap > div { min-width: 540px; }
+    .mid-cta { padding: 16px 18px; }
+    .mid-cta-btn { width: 100%; text-align: center; }
+    .cta-block { padding: 22px 18px; }
+    .cta-name { font-size: 24px; }
+    .card { padding: 14px 14px; }
+    .track-header { padding: 14px 16px; }
+    .section { margin-bottom: 28px; }
+  }
+
+  @media print {
+    .nav { position: relative; }
+    .container { padding: 24px 24px 0; max-width: 100%; }
+    .section { break-inside: avoid; margin-bottom: 24px; }
+    .section-title { break-after: avoid; }
+    .card, .card.full { break-inside: avoid; }
+    .grid-2 { break-inside: avoid; }
+    .track { break-inside: avoid; }
+    .track-header { break-after: avoid; }
+    .track-timeline { break-inside: avoid; }
+    .timeline-step { break-inside: avoid; }
+    .addon { break-inside: avoid; }
+    .reason { break-inside: avoid; }
+    .reasons { break-inside: avoid; }
+    .contract-card { break-inside: avoid; }
+    .contracts { break-inside: avoid; }
+    .guarantee-tile { break-inside: avoid; }
+    .guarantee-grid { break-inside: avoid; }
+    .steps li { break-inside: avoid; }
+    .pricing-table-wrap { break-inside: avoid; }
+    .mid-cta { break-inside: avoid; }
+    .cta-block { break-inside: avoid; }
+    .hero { break-inside: avoid; }
+    .footer { break-inside: avoid; }
+  }
+
+  @media (max-width: 420px) {
+    .hero-name { font-size: 26px; }
+    .track-name { font-size: 18px; }
+    .contract-discount { font-size: 32px; }
+    .package-price-main { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Matt Strohm Media</div>
+  <div class="nav-right">Proposal · G1 Window Cleaner · May 2026</div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-label">Digital Marketing Proposal — 8 May 2026</div>
+    <div class="hero-name">G1 Window Cleaner Glasgow</div>
+    <div class="hero-sub">Prepared by Matt Strohm Media for Dave</div>
+    <div class="hero-intro">
+      Dave, 12 years trading and <strong>#1 on ThreeBestRated</strong>. You've done the hard part. The problem is most people outside your Google Ads budget don't know you exist. Summer's a few weeks away, and there's still nobody in Glasgow running proper social for a window cleaning business. This is what we fix.
+    </div>
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="#options" style="display:inline-block;background:var(--gold);color:#111;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:9px 22px;border-radius:4px;text-decoration:none;">See the Plan</a>
+      <a href="mailto:Matt@mattstrohmmedia.com" style="display:inline-block;background:transparent;color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:9px 22px;border-radius:4px;text-decoration:none;border:1px solid var(--border-gold);">Skip Straight to Yes</a>
+    </div>
+  </div>
+
+  <!-- WHY NOW -->
+  <div class="section">
+    <div class="section-title">Why This, Why Now</div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="reason-title">Market Gap</div>
+        <div class="reason-desc">Very few Glasgow window cleaners are running active social media or Meta ads. When a potential customer scrolls Instagram or Facebook, there's almost nobody from the trade showing up. The first business to show up consistently becomes the default choice — that position is open right now, and G1 has the credibility to own it.</div>
+      </div>
+      <div class="reason">
+        <div class="reason-title">Google Is Getting Riskier</div>
+        <div class="reason-desc">Google Ads are getting more expensive and less predictable as AI changes how people search. Social builds an audience you own — one that doesn't disappear when ad costs spike.</div>
+      </div>
+      <div class="reason">
+        <div class="reason-title">The Timing Is Now</div>
+        <div class="reason-desc">Tenancy changeovers, student moves, summer cleans. Building the audience now means posts are landing when the demand is highest — not after the rush has passed.</div>
+      </div>
+    </div>
+    <div class="card accent">
+      <div class="card-label">Your Advantage Nobody Else Has</div>
+      <div class="card-value">You're <strong>#1 ThreeBestRated in Glasgow</strong> and you've been doing this for 12 years. No competitor can fake that. The biggest local Facebook account has 766 likes and no Instagram. Nobody's running Reels or Meta ads. Whoever shows up consistently first owns the space. Right now, that space is empty.</div>
+    </div>
+  </div>
+
+  <!-- WEBSITE FOUNDATION -->
+  <div class="section">
+    <div class="section-title">The Website — Your Most Important Asset</div>
+    <div class="card full accent" style="margin-bottom:14px;">
+      <div class="card-label">Why Social Media Needs A Strong Website Behind It</div>
+      <div class="card-value">
+        Someone sees your Reel, taps the link in your bio, and lands on your Squarespace page. If that page doesn't look the part, you've lost them. Doesn't matter how good the Reel was.<br><br>
+        A good website does what social can't. It shows up on Google when someone searches for a window cleaner in Glasgow. It has a quote form that actually converts. And it makes G1 look as professional as the work you do. Social drives the traffic. The website closes it.
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-label">What Happens Without A Proper Website</div>
+        <div class="card-value">
+          <ul>
+            <li>Social posts do the hard work of building interest — then lose the customer at the bio link</li>
+            <li>Potential clients Google you, land on a dated site, and quietly go elsewhere</li>
+            <li>Your #1 ThreeBestRated ranking and 12 years of experience look amateur on a template Squarespace page</li>
+            <li>You're paying for social content that's driving traffic to a leaking bucket</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-label">What A New Site Changes</div>
+        <div class="card-value">
+          <ul>
+            <li class="check">Every social post links to a site that looks as good as the work you do</li>
+            <li class="check">Clear quote request or contact form — customers know exactly what to do</li>
+            <li class="check">Built for Google — your existing SEO footprint amplified, not undermined</li>
+            <li class="check">Your reviews, your #1 badge, your team — all presented properly</li>
+            <li class="check">Works as a 24/7 sales page even when you're on the job</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card full" style="border-color:var(--border-gold);background:rgba(201,168,76,0.04);">
+        <div class="card-label">The Difference It Makes</div>
+        <div class="card-value">Social media is the billboard on the A8. Your website is what people walk into when they follow it up. You can run the best content in Glasgow, but if the site looks rough, they don't call. Option 2 gives you both in one go.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION 1: SOCIAL STARTER -->
+  <div class="section" id="options">
+    <div class="section-title">Your Options</div>
+    <div class="card" style="margin-bottom:16px;border-color:var(--border-gold);background:rgba(201,168,76,0.05);">
+      <div class="card-label">My Recommendation For You</div>
+      <div class="card-value">If budget's the priority right now, start with <strong>Option 1</strong> — get social running before summer and prove the concept. If you want to fix the whole picture at once, <strong>Option 2 at £875</strong> is the better play. You're paying for social either way, and a new site means every post lands somewhere that actually converts. That's the version I'd go with.</div>
+    </div>
+
+    <div class="track">
+      <div class="track-header">
+        <div>
+          <div class="track-badge starter">Option 1 — Get Started</div>
+          <div class="track-name">Social Management Starter</div>
+          <div class="track-sub">Instagram + Facebook · 8–12 posts/month · You supply phone footage, we run everything else</div>
+        </div>
+        <div class="track-price-area">
+          <div class="track-price">£300<span style="font-size:14px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">/mo</span></div>
+          <div class="track-price-note">No contract required</div>
+        </div>
+      </div>
+      <div style="padding: 16px 20px;">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-label">What's Included</div>
+            <div class="card-value">
+              <ul>
+                <li class="check">Instagram built from scratch</li>
+                <li class="check">Facebook page reactivated and refreshed</li>
+                <li class="check">Monthly content calendar (IG + FB)</li>
+                <li class="check">8–12 posts/month: Reels, before/afters, branded graphics</li>
+                <li class="check">All captions, hashtags and light design</li>
+                <li class="check">Monthly performance report</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-label">What I Need From You</div>
+            <div class="card-value">
+              <ul>
+                <li>Short phone clips once a month — before/afters, water-fed pole, finished windows</li>
+                <li>Facebook admin access (or we set up fresh)</li>
+                <li>Quick post approval — 2 minutes on your phone</li>
+              </ul>
+              <div style="margin-top:12px;font-size:12px;color:var(--muted);">That's it. I handle the rest.</div>
+            </div>
+          </div>
+          <div class="card full accent">
+            <div class="card-label">Content Strategy — What We Post</div>
+            <div class="card-value">
+              <ul>
+                <li>Before/after Reels and statics. Highest engagement in this niche by a distance.</li>
+                <li>Glasgow local content. Tenements, recognisable streets, postcode shoutouts.</li>
+                <li>Seasonal posts timed to demand. Tenancy move-outs May–Aug, commercial cleans in winter.</li>
+                <li>Trust content. Your team, the water-fed pole, how the process works.</li>
+                <li>Social proof. Your #1 ThreeBestRated badge and review screenshots, designed properly.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTION 2: FULL REBRAND -->
+    <div class="track featured">
+      <div class="track-header">
+        <div>
+          <div class="track-badge growth">Option 2 — Best Value</div>
+          <div class="track-name">Rebrand Bundle + Ongoing Management</div>
+          <div class="track-sub">Everything in Option 1, plus a complete rebrand — new logo, new website, full content setup</div>
+        </div>
+        <div class="track-price-area">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:2px;">Was <span style="text-decoration:line-through;color:var(--gold-dim);">£1,250</span></div>
+          <div class="track-price">£875<span style="font-size:14px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;"> month 1</span></div>
+          <div class="track-price-note">limited launch price · then £300/mo from month 2</div>
+        </div>
+      </div>
+      <div class="track-timeline">
+        <div class="timeline-step">
+          <div class="timeline-mo">Month 1</div>
+          <div class="timeline-title">Full Rebrand</div>
+          <div style="font-size:11px;color:var(--muted);text-decoration:line-through;font-family:'Bebas Neue',sans-serif;letter-spacing:1px;">£1,250</div>
+          <div class="timeline-price">£875</div>
+          <div class="timeline-items">New logo + brand identity<br>Custom-coded website (replaces Squarespace)<br>All copy and content written<br>Social profiles fully set up + branded<br>First month's content created</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-mo">Month 2 onwards</div>
+          <div class="timeline-title">Ongoing Social Management</div>
+          <div class="timeline-price">£300/mo</div>
+          <div class="timeline-items">8–12 posts/month IG + FB<br>Monthly content calendar<br>Captions, hashtags, design<br>Monthly performance report</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-mo">Optional add-ons</div>
+          <div class="timeline-title">Scale When Ready</div>
+          <div class="timeline-price" style="font-size:16px;">See below</div>
+          <div class="timeline-items">Web maintenance from £50/mo<br>Ads management from £250/mo<br>Stack on whenever you're ready</div>
+        </div>
+      </div>
+      <div style="padding: 0 20px 16px;">
+        <div class="card accent">
+          <div class="card-label">What the Rebrand Covers</div>
+          <div class="card-value">
+            <ul>
+              <li class="check">New logo and brand identity — consistent across van livery, social profiles, and the web</li>
+              <li class="check">Custom-coded website built to replace Squarespace — fast, professional, optimised for Google and built to convert visitors into enquiries</li>
+              <li class="check">All website copy written for you — services, about, contact, the lot</li>
+              <li class="check">Website and social profiles designed to match — one unified brand, not a patchwork</li>
+              <li class="check">Instagram + Facebook built, branded and ready to launch from day one</li>
+              <li class="check">First month of content planned, designed and scheduled — social is live the moment the site goes live</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MID-PAGE CTA -->
+  <div class="mid-cta">
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--text);margin-bottom:3px;">Seen enough? Let's get moving.</div>
+      <div style="font-size:12px;color:var(--muted);">Reply with which option suits you and I'll have the onboarding pack over the same day.</div>
+    </div>
+    <a href="mailto:Matt@mattstrohmmedia.com" class="mid-cta-btn">Email Matt Now</a>
+  </div>
+
+  <!-- ADD-ONS -->
+  <div class="section">
+    <div class="section-title">Optional Add-Ons — Stack On Whenever You're Ready</div>
+    <div class="addon">
+      <div>
+        <div class="addon-name">Web Maintenance</div>
+        <div class="addon-desc">Light-touch monthly updates — text changes, new service pages, seasonal offers. Keeps the site current without you touching it.</div>
+      </div>
+      <div class="addon-price">£50<small>/mo</small></div>
+    </div>
+    <div class="addon">
+      <div>
+        <div class="addon-name">Ads Management (Meta / Facebook)</div>
+        <div class="addon-desc">Glasgow geo-targeted ads running from the content we've already built. When social has a few months of content behind it, ads amplify what's working. You mentioned redirecting your winter Google budget — this is where it goes.</div>
+      </div>
+      <div class="addon-price">£250<small>/mo</small></div>
+    </div>
+    <div class="card green-card" style="margin-top: 6px;">
+      <div class="card-label">How It Scales</div>
+      <div class="card-value">Start with social. Add maintenance once the site's live. Bring in ads when the content's been running a few months and you're happy with what you're seeing. Nothing needs to happen all at once.</div>
+    </div>
+  </div>
+
+  <!-- CONTRACT DISCOUNTS -->
+  <div class="section">
+    <div class="section-title">Contract Discounts</div>
+    <div class="contracts">
+      <div class="contract-card">
+        <div class="contract-term">Month to Month</div>
+        <div class="contract-discount">—</div>
+        <div class="contract-note">Full flexibility. Cancel or pause any time. Standard monthly rate applies.</div>
+        <div class="contract-example">£300/mo</div>
+      </div>
+      <div class="contract-card">
+        <div class="contract-term">6 Month Contract</div>
+        <div class="contract-discount">10% Off</div>
+        <div class="contract-note">Lock in 6 months and save on your monthly rate. Good if you're ready to commit to building the audience.</div>
+        <div class="contract-example">£270/mo</div>
+      </div>
+      <div class="contract-card featured-contract">
+        <div class="contract-term">12 Month Contract</div>
+        <div class="contract-discount">20% Off</div>
+        <div class="contract-note">Best value. A year gives us time to properly build the audience, test content and layer in ads with real data.</div>
+        <div class="contract-example">£240/mo</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:12px;">
+      <div class="card-label">Applies To</div>
+      <div class="card-value">Discounts apply to the monthly social management fee (£300/mo). Add-ons (maintenance, ads) are billed at standard rate on top. The rebrand bundle (Option 2 Month 1) is a one-off flat fee — not discounted.</div>
+    </div>
+  </div>
+
+  <!-- PRICING SUMMARY -->
+  <div class="section">
+    <div class="section-title">At a Glance — Price Summary</div>
+    <div class="pricing-table-wrap"><div style="background:var(--bg2);border:1px solid var(--border);border-radius:6px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--border);">
+        <div>Service</div>
+        <div>Monthly (M2M)</div>
+        <div>6 Month (-10%)</div>
+        <div>12 Month (-20%)</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0;padding:12px 16px;border-bottom:1px solid var(--border);align-items:center;">
+        <div style="font-size:13px;font-weight:500;">Social Management Starter</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">£300/mo</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">£270/mo</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--green);">£240/mo</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0;padding:12px 16px;border-bottom:1px solid var(--border);align-items:center;">
+        <div style="font-size:13px;font-weight:500;">+ Web Maintenance</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">£50/mo</div>
+        <div style="font-size:12px;color:var(--muted);">standard rate</div>
+        <div style="font-size:12px;color:var(--muted);">standard rate</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0;padding:12px 16px;border-bottom:1px solid var(--border);align-items:center;">
+        <div style="font-size:13px;font-weight:500;">+ Ads Management</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">£250/mo</div>
+        <div style="font-size:12px;color:var(--muted);">standard rate</div>
+        <div style="font-size:12px;color:var(--muted);">standard rate</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0;padding:12px 16px;align-items:center;background:rgba(201,168,76,0.04);border-top:1px solid var(--border-gold);">
+        <div style="font-size:13px;font-weight:500;">Full Rebrand Bundle <span style="color:var(--muted);font-weight:400;">(one-off)</span></div>
+        <div><span style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--muted);text-decoration:line-through;">£1,250</span> <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);">£875</span></div>
+        <div style="font-size:12px;color:var(--muted);">flat fee</div>
+        <div style="font-size:12px;color:var(--muted);">flat fee</div>
+      </div>
+    </div></div></div>
+
+  <!-- 90 DAY TIMELINE -->
+  <div class="section">
+    <div class="section-title">What The First 90 Days Look Like</div>
+    <div class="track">
+      <div class="track-timeline">
+        <div class="timeline-step">
+          <div class="timeline-mo">Days 1–14</div>
+          <div class="timeline-title">Set Up & Launch</div>
+          <div class="timeline-items">Instagram built from scratch<br>Facebook refreshed and rebranded<br>First content calendar drafted<br>First posts live by end of week 2</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-mo">Days 15–45</div>
+          <div class="timeline-title">Build The Rhythm</div>
+          <div class="timeline-items">Consistent posting schedule running<br>Before/after Reels gaining traction<br>Glasgow local content establishing reach<br>First month performance report</div>
+        </div>
+        <div class="timeline-step">
+          <div class="timeline-mo">Days 46–90</div>
+          <div class="timeline-title">Optimise & Scale</div>
+          <div class="timeline-items">Data shows what's working<br>Content strategy refined<br>Audience growing month on month<br>Ads conversation when you're ready</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBJECTIONS -->
+  <div class="section">
+    <div class="section-title">Questions You Probably Have</div>
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-label">"Will social media actually bring me new work?"</div>
+      <div class="card-value">Not immediately, and I won't pretend otherwise. The first couple of months are about getting G1 showing up consistently where people are already scrolling. It supports everything else you're doing too. Your Google Ads get more clicks when people have already seen your content. Referrals convert easier when your page looks active. Most businesses try social for a month, see nothing, and quit. The ones that stick to 90 days are the ones that see what it can do.</div>
+    </div>
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-label">"I'm not on social myself — will this be a lot of work for me?"</div>
+      <div class="card-value">No. Send me a handful of phone clips each month. A before, an after, maybe the water-fed pole in action. That's the job. I write the captions, build the graphics, schedule everything and send you a report. Post approval takes two minutes on your phone. If you can't get footage one month, just say. We'll work around it.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">"What if it doesn't work out?"</div>
+      <div class="card-value">On the month-to-month option, you can walk away any time. The content, the accounts, the audience all stay with you regardless. The 6 and 12-month contracts are there to lower your monthly rate. That's the only reason they exist.</div>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="section">
+    <div class="section-title">What Happens Next</div>
+    <div class="card">
+      <ol class="steps">
+        <li>
+          <div>
+            <div class="step-title">You confirm which option you'd like to go with</div>
+            <div class="step-desc">Option 1 (Social Starter) or Option 2 (Full Rebrand). No pressure — we can talk it through if you want.</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">I send a simple agreement and first invoice</div>
+            <div class="step-desc">Nothing complicated. Clear terms, clear scope. Work starts once the first payment is in.</div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <div class="step-title">I send your onboarding pack — everything in one place</div>
+            <div class="step-desc">You'll receive a full onboarding document to complete at your own pace — brand questionnaire, content preferences, account access details, plus your signed contract and first invoice. Fill it in, send it back, and we're ready to go.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-grid">
+    <div class="guarantee-tile">
+      <div class="guarantee-label">Your Content, Always</div>
+      <div class="guarantee-desc">Everything created is yours. Accounts, content, graphics — all stays with G1 regardless of what happens.</div>
+    </div>
+    <div class="guarantee-tile">
+      <div class="guarantee-label">No Surprises</div>
+      <div class="guarantee-desc">Clear scope, clear pricing. You'll always know what you're paying for and why.</div>
+    </div>
+    <div class="guarantee-tile">
+      <div class="guarantee-label">You Approve Everything</div>
+      <div class="guarantee-desc">Nothing goes live without your sign-off. You're in control of what's posted, always.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <div class="cta-name">Let's Get G1 In Front of Glasgow</div>
+    <div class="cta-sub">Summer's nearly here. The gap in the market won't stay open forever. Drop me a message and we can have everything moving this week.</div>
+    <div class="cta-contact">
+      Matt Strohm — Matt Strohm Media<br>
+      <a href="mailto:Matt@mattstrohmmedia.com">Matt@mattstrohmmedia.com</a>
+    </div>
+  </div>
+
+  <div class="footer">Matt Strohm Media · Proposal for G1 Window Cleaner Glasgow · 08 May 2026</div>
+
+</div>
+
+<!-- PASSWORD OVERLAY -->
+<div id="auth-gate" style="position:fixed;inset:0;z-index:9999;background:#111;display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="width:100%;max-width:360px;text-align:center;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:#C9A84C;margin-bottom:4px;">Matt Strohm Media</div>
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-bottom:32px;">Private Proposal</div>
+    <input id="pw-input" type="password" placeholder="Enter access code" onkeydown="if(event.key==='Enter')checkPw()"
+      style="width:100%;background:#191919;border:1px solid #2a2a2a;border-radius:6px;padding:12px 16px;color:#f0f0f0;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;margin-bottom:10px;"/>
+    <div id="pw-error" style="display:none;font-size:12px;color:#e05050;margin-bottom:10px;">Incorrect code. Try again.</div>
+    <button onclick="checkPw()"
+      style="width:100%;background:#C9A84C;color:#111;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;padding:11px;border:none;border-radius:4px;cursor:pointer;">
+      View Proposal
+    </button>
+  </div>
+</div>
+
+<script>
+  var PASSWORD = 'G1Glasgow';
+
+  if (sessionStorage.getItem('msm-auth') === PASSWORD) {
+    document.getElementById('auth-gate').style.display = 'none';
+  }
+
+  function checkPw() {
+    var val = document.getElementById('pw-input').value;
+    if (val === PASSWORD) {
+      sessionStorage.setItem('msm-auth', PASSWORD);
+      document.getElementById('auth-gate').style.display = 'none';
+    } else {
+      document.getElementById('pw-error').style.display = 'block';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  }
+</script>
+</body>
+</html>
